@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QnA Search Modern</title>
+
+<!-- GOOGLE CSE -->
+<script async src="https://www.google.com/cse/cse.js?cx=a2279bc5eae8c41f8"></script>
+
+<!-- GOOGLE FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ================= RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ================= BODY ================= */
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #1a1a40, #05050f);
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* ================= LOADING ================= */
+#loading {
+    position: fixed;
+    inset: 0;
+    background: #05050f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.spinner {
+    width: 90px;
+    height: 90px;
+    border: 6px solid #222;
+    border-top: 6px solid #00f7ff;
+    border-radius: 50%;
+    animation: spin 1.2s linear infinite;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+#loading p {
+    margin-top: 15px;
+    color: #00f7ff;
+    letter-spacing: 2px;
+}
+
+/* ================= BACKGROUND ANIMATION ================= */
+.bg-orb {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: #00f7ff;
+    filter: blur(120px);
+    opacity: 0.25;
+    animation: float 12s infinite alternate;
+}
+
+.bg-orb.one { top: -100px; left: -100px; }
+.bg-orb.two { bottom: -150px; right: -100px; background:#7f00ff; }
+
+@keyframes float {
+    from { transform: translateY(0); }
+    to { transform: translateY(80px); }
+}
+
+/* ================= HEADER ================= */
+header {
+    position: relative;
+    text-align: center;
+    padding: 80px 20px 30px;
+}
+
+header h1 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #00f7ff, #7f00ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px #00f7ff; }
+    to { text-shadow: 0 0 25px #7f00ff; }
+}
+
+header p {
+    opacity: .8;
+    margin-top: 10px;
+    letter-spacing: 1px;
+}
+
+/* ================= SEARCH BOX ================= */
+.search-box {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    box-shadow: 0 0 40px rgba(0,247,255,.15);
+    animation: fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ================= GOOGLE SEARCH CUSTOM ================= */
+.gsc-control-cse {
+    background: transparent !important;
+    border: none !important;
+}
+
+.gsc-search-box input {
+    height: 50px !important;
+    border-radius: 12px !important;
+    font-size: 1rem !important;
+}
+
+.gsc-search-button-v2 {
+    background: linear-gradient(90deg,#00f7ff,#7f00ff) !important;
+    border-radius: 12px !important;
+}
+
+/* ================= FOOTER ================= */
+footer {
+    text-align: center;
+    padding: 30px;
+    font-size: .85rem;
+    opacity: .7;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width:768px) {
+    header h1 { font-size: 2.3rem; }
+    .search-box { margin: 20px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOADING -->
+<div id="loading">
+    <div class="spinner"></div>
+    <p>LOADING SYSTEM</p>
+</div>
+
+<!-- BACKGROUND EFFECT -->
+<div class="bg-orb one"></div>
+<div class="bg-orb two"></div>
+
+<header>
+    <h1>QnA SEARCH</h1>
+    <p>Pencarian Tanya Jawab Modern & Futuristik</p>
+</header>
+
+<section class="search-box">
+    <gcse:search></gcse:search>
+</section>
+
+<footer>
+    © 2026 • QnA Search Engine • Powered by Google CSE
+</footer>
+
+<script>
+window.addEventListener("load", () => {
+    const load = document.getElementById("loading");
+    load.style.opacity = "0";
+    setTimeout(() => load.remove(), 800);
+});
+</script>
+
+</body>
+</html>

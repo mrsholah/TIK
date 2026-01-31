@@ -3,189 +3,194 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>QnA Search Modern</title>
+<title>KLM Pro • Kajian Kitab</title>
 
-<!-- GOOGLE CSE -->
-<script async src="https://www.google.com/cse/cse.js?cx=a2279bc5eae8c41f8"></script>
-
-<!-- GOOGLE FONT -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-/* ================= RESET ================= */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+body{
+    margin:0;
+    font-family:Poppins,sans-serif;
+    background:#0f2027;
+    color:#fff;
 }
-
-/* ================= BODY ================= */
-body {
-    font-family: 'Poppins', sans-serif;
-    min-height: 100vh;
-    background: radial-gradient(circle at top, #1a1a40, #05050f);
-    color: #fff;
-    overflow-x: hidden;
+header{
+    padding:16px;
+    text-align:center;
+    font-weight:700;
+    font-size:1.2rem;
+    background:linear-gradient(135deg,#00ffd5,#007777);
+    color:#000;
 }
-
-/* ================= LOADING ================= */
-#loading {
-    position: fixed;
-    inset: 0;
-    background: #05050f;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
+section{
+    display:none;
+    padding:16px;
 }
-
-.spinner {
-    width: 90px;
-    height: 90px;
-    border: 6px solid #222;
-    border-top: 6px solid #00f7ff;
-    border-radius: 50%;
-    animation: spin 1.2s linear infinite;
+section.active{display:block}
+.card{
+    background:rgba(255,255,255,.1);
+    border-radius:16px;
+    padding:14px;
+    margin-bottom:12px;
 }
-
-@keyframes spin {
-    100% { transform: rotate(360deg); }
+select,button{
+    width:100%;
+    padding:10px;
+    border-radius:10px;
+    border:none;
+    margin-top:8px;
+    font-family:Poppins;
 }
-
-#loading p {
-    margin-top: 15px;
-    color: #00f7ff;
-    letter-spacing: 2px;
+button{
+    background:#00ffd5;
+    font-weight:600;
 }
-
-/* ================= BACKGROUND ANIMATION ================= */
-.bg-orb {
-    position: absolute;
-    width: 400px;
-    height: 400px;
-    background: #00f7ff;
-    filter: blur(120px);
-    opacity: 0.25;
-    animation: float 12s infinite alternate;
+.nav{
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    display:flex;
+    background:#000;
 }
-
-.bg-orb.one { top: -100px; left: -100px; }
-.bg-orb.two { bottom: -150px; right: -100px; background:#7f00ff; }
-
-@keyframes float {
-    from { transform: translateY(0); }
-    to { transform: translateY(80px); }
+.nav button{
+    flex:1;
+    background:none;
+    color:#fff;
+    padding:10px 0;
 }
-
-/* ================= HEADER ================= */
-header {
-    position: relative;
-    text-align: center;
-    padding: 80px 20px 30px;
+.nav button.active{
+    color:#00ffd5;
 }
-
-header h1 {
-    font-size: 3.2rem;
-    font-weight: 700;
-    background: linear-gradient(90deg, #00f7ff, #7f00ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: glow 2s infinite alternate;
-}
-
-@keyframes glow {
-    from { text-shadow: 0 0 10px #00f7ff; }
-    to { text-shadow: 0 0 25px #7f00ff; }
-}
-
-header p {
-    opacity: .8;
-    margin-top: 10px;
-    letter-spacing: 1px;
-}
-
-/* ================= SEARCH BOX ================= */
-.search-box {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 30px;
-    background: rgba(255,255,255,0.06);
-    backdrop-filter: blur(15px);
-    border-radius: 20px;
-    box-shadow: 0 0 40px rgba(0,247,255,.15);
-    animation: fadeUp 1s ease forwards;
-}
-
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(50px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* ================= GOOGLE SEARCH CUSTOM ================= */
-.gsc-control-cse {
-    background: transparent !important;
-    border: none !important;
-}
-
-.gsc-search-box input {
-    height: 50px !important;
-    border-radius: 12px !important;
-    font-size: 1rem !important;
-}
-
-.gsc-search-button-v2 {
-    background: linear-gradient(90deg,#00f7ff,#7f00ff) !important;
-    border-radius: 12px !important;
-}
-
-/* ================= FOOTER ================= */
-footer {
-    text-align: center;
-    padding: 30px;
-    font-size: .85rem;
-    opacity: .7;
-}
-
-/* ================= RESPONSIVE ================= */
-@media (max-width:768px) {
-    header h1 { font-size: 2.3rem; }
-    .search-box { margin: 20px; }
+.small{
+    font-size:.85rem;
+    opacity:.8;
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOADING -->
-<div id="loading">
-    <div class="spinner"></div>
-    <p>LOADING SYSTEM</p>
+<header>📚 Kajian Kitab KLM Pro</header>
+
+<!-- ===== SHOLAT ===== -->
+<section id="sholat" class="active">
+<div class="card">
+<h3>🕌 Jadwal Sholat</h3>
+<div id="jadwal">Memuat...</div>
 </div>
-
-<!-- BACKGROUND EFFECT -->
-<div class="bg-orb one"></div>
-<div class="bg-orb two"></div>
-
-<header>
-    <h1>QnA SEARCH</h1>
-    <p>Pencarian Tanya Jawab Modern & Futuristik</p>
-</header>
-
-<section class="search-box">
-    <gcse:search></gcse:search>
 </section>
 
-<footer>
-    © 2026 • QnA Search Engine • Powered by Google CSE
-</footer>
+<!-- ===== QURAN ===== -->
+<section id="quran">
+<div class="card">
+<h3>📖 Al-Qur'an</h3>
+<select id="surah"></select>
+<div id="ayat"></div>
+</div>
+</section>
+
+<!-- ===== HADIS ===== -->
+<section id="hadis">
+<div class="card">
+<h3>📜 Kitab Hadis</h3>
+<select id="kitab">
+<option value="bukhari">Shahih Bukhari</option>
+<option value="muslim">Shahih Muslim</option>
+<option value="tirmidzi">Tirmidzi</option>
+<option value="abu-daud">Abu Daud</option>
+<option value="nasai">An-Nasa'i</option>
+<option value="ibnu-majah">Ibnu Majah</option>
+</select>
+<button onclick="loadHadis()">Muat Hadis</button>
+<div id="hadisList" class="small"></div>
+</div>
+</section>
+
+<!-- ===== TAFSIR ===== -->
+<section id="tafsir">
+<div class="card">
+<h3>📚 Tafsir Qur'an</h3>
+<p class="small">Tafsir akan tampil otomatis saat ayat dipilih</p>
+<div id="tafsirBox"></div>
+</div>
+</section>
+
+<!-- ===== NAV ===== -->
+<div class="nav">
+<button class="active" onclick="show('sholat',this)">🕌</button>
+<button onclick="show('quran',this)">📖</button>
+<button onclick="show('hadis',this)">📜</button>
+<button onclick="show('tafsir',this)">📚</button>
+</div>
 
 <script>
-window.addEventListener("load", () => {
-    const load = document.getElementById("loading");
-    load.style.opacity = "0";
-    setTimeout(() => load.remove(), 800);
+function show(id,el){
+    document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+    document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("active"));
+    el.classList.add("active");
+}
+
+/* ===== SHOLAT ===== */
+fetch("https://api.aladhan.com/v1/timingsByCity?city=Jakarta&country=Indonesia&method=11")
+.then(r=>r.json())
+.then(d=>{
+    let t=d.data.timings;
+    jadwal.innerHTML=`
+    Subuh: ${t.Fajr}<br>
+    Dzuhur: ${t.Dhuhr}<br>
+    Ashar: ${t.Asr}<br>
+    Maghrib: ${t.Maghrib}<br>
+    Isya: ${t.Isha}`;
+})
+.catch(()=>jadwal.innerHTML="Gagal memuat jadwal");
+
+/* ===== QURAN ===== */
+fetch("https://api.alquran.cloud/v1/surah")
+.then(r=>r.json())
+.then(d=>{
+    d.data.forEach(s=>{
+        surah.innerHTML+=`<option value="${s.number}">${s.name}</option>`;
+    });
 });
+
+surah.onchange=()=>{
+fetch(`https://api.alquran.cloud/v1/surah/${surah.value}/id.indonesian`)
+.then(r=>r.json())
+.then(d=>{
+    ayat.innerHTML="";
+    d.data.ayahs.forEach(a=>{
+        ayat.innerHTML+=`<p>${a.numberInSurah}. ${a.text}</p>`;
+        loadTafsir(a.numberInSurah);
+    });
+});
+}
+
+/* ===== HADIS ===== */
+function loadHadis(){
+    hadisList.innerHTML="Memuat hadis...";
+    let k=kitab.value;
+    fetch(`https://hadis-api-id.vercel.app/hadith/${k}?page=1&limit=5`)
+    .then(r=>r.json())
+    .then(d=>{
+        hadisList.innerHTML="";
+        d.items.forEach(h=>{
+            hadisList.innerHTML+=`<p>${h.number}. ${h.arab}</p>`;
+        });
+    })
+    .catch(()=>hadisList.innerHTML="Gagal memuat hadis");
+}
+
+/* ===== TAFSIR ===== */
+function loadTafsir(ayat){
+fetch(`https://quranenc.com/api/v1/translation/aya/indonesian_sabiq/1/${ayat}`)
+.then(r=>r.json())
+.then(d=>{
+    tafsirBox.innerHTML=d.result.translation;
+})
+.catch(()=>tafsirBox.innerHTML="Tafsir tidak tersedia");
+}
 </script>
 
 </body>
